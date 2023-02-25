@@ -1,4 +1,5 @@
 import simulateGame from "./modules/match";
+import countdown from "./modules/countdown";
 
 // Necessary DOM elements selections
 const cpuScoreDOM = document.querySelector(".cpu-score");
@@ -81,9 +82,10 @@ function clearSelection(){
   playerChoiceButtons.forEach(button => button.classList.remove("selected"))
 }
 
-function beginMatch(){
+async function beginMatch(){
   generateCPUChoice()
   const gameResult = simulateGame(playerChoice, cpuChoice);
+  await countdown()
   displayResult(gameResult)
   displayCpuChoice()
   matchHistory.push(gameResult)

@@ -51,6 +51,12 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cpu-choice {
   width: 100px;
   height: 100px;
