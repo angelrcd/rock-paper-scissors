@@ -27,8 +27,35 @@ playButton.addEventListener("click", beginMatch)
 let playerChoice = null;
 let cpuChoice = null;
 let matchHistory = []
+let playerVictories = 0
+let cpuVictories = 0
 
-// Declaracion de funciones
+// Set players score in display
+displayScores()
+
+// Function declaration
+
+/**
+ * 
+ * @param {number} num If -1 counts CPU victories, 1 counts player
+ * @returns number of victories of cpu or player
+ */
+function countVictories(num){
+  return matchHistory.reduce((acc, val)=>{
+    if (val === num){
+      acc++;
+    }
+    return acc;
+  }, 0)
+}
+
+function displayScores(){
+  playerVictories = countVictories(1)
+  cpuVictories = countVictories(-1)
+  cpuScoreDOM.textContent = cpuVictories;
+  playerScoreDOM.textContent = playerVictories;
+}
+
 /**
  * Changes the value of current player choice
  * @param {number} choice Must be a number between 0-2
@@ -89,5 +116,6 @@ async function beginMatch(){
   displayResult(gameResult)
   displayCpuChoice()
   matchHistory.push(gameResult)
+  displayScores()
   console.log(matchHistory)
 }
