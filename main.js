@@ -3,14 +3,21 @@ import simulateGame from "./modules/match";
 // Necessary DOM elements selections
 const cpuScoreDOM = document.querySelector(".cpu-score");
 const playerScoreDOM = document.querySelector(".player-score");
+
+const cpuChoiceDisplay = document.querySelector(".cpu-choice")
+const countdownDisplay = document.querySelector(".countdown")
+const resultDisplay = document.querySelector(".result")
+
 const playerChoiceButtons = document.querySelectorAll(".player-choice-container button");
 const playButton = document.querySelector(".begin-match-button")
-const resultDisplay = document.querySelector(".result")
-const countdownDisplay = document.querySelector(".countdown")
 
 // Event Listeners
 playerChoiceButtons.forEach((choiceButton, index) => {
-  choiceButton.addEventListener("click", () => setPlayerChoice(index))
+  choiceButton.addEventListener("click", () => {
+    clearSelection()
+    setPlayerChoice(index);
+    choiceButton.classList.add("selected")
+  })
 })
 
 playButton.addEventListener("click", beginMatch)
@@ -58,6 +65,11 @@ function displayResult(gameResult){
   resultDisplay.classList.remove("hidden")
 }
 
+function displayCpuChoice(){
+  const choice = ["Rock", "Paper", "Scissors"];
+  cpuChoiceDisplay.textContent=choice[cpuChoice];
+}
+
 /**
  * Hides the result in display
  */
@@ -65,10 +77,15 @@ function hideResult(){
   resultDisplay.classList.add("hidden")
 }
 
+function clearSelection(){
+  playerChoiceButtons.forEach(button => button.classList.remove("selected"))
+}
+
 function beginMatch(){
   generateCPUChoice()
   const gameResult = simulateGame(playerChoice, cpuChoice);
   displayResult(gameResult)
+  displayCpuChoice()
   matchHistory.push(gameResult)
   console.log(matchHistory)
 }
