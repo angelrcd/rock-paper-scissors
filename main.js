@@ -1,5 +1,6 @@
 import simulateGame from "./modules/match";
 import countdown from "./modules/countdown";
+import insertMatch from "./modules/historyTable";
 
 // Necessary DOM elements selections
 const cpuScoreDOM = document.querySelector(".cpu-score");
@@ -117,5 +118,5 @@ async function beginMatch(){
   displayCpuChoice()
   matchHistory.push(gameResult)
   displayScores()
-  console.log(matchHistory)
+  insertMatch(matchHistory.length, gameResult)
 }
