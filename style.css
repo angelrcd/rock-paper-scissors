@@ -70,3 +70,11 @@ body {
 .selected {
   border: 2px solid red;
 }
+
+.winner-row {
+  background: lightgreen;
+}
+
+.loser-row {
+  background: lightcoral;
+}
