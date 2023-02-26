@@ -20,5 +20,3 @@ export default function countdown(){
     }, 1000)
   })
 }
-
-await countdown()
