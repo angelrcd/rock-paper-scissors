@@ -1,6 +1,7 @@
 import simulateGame from "./modules/match";
 import countdown from "./modules/countdown";
 import insertMatch from "./modules/historyTable";
+import { reEnableButtons, disableButtons } from "./modules/disableButtons";
 
 // Necessary DOM elements selections
 const cpuScoreDOM = document.querySelector(".cpu-score");
@@ -111,11 +112,13 @@ function clearSelection(){
 }
 
 async function beginMatch(){
+  disableButtons()
   generateCPUChoice()
   const gameResult = simulateGame(playerChoice, cpuChoice);
   await countdown()
   displayResult(gameResult)
   displayCpuChoice()
+  reEnableButtons()
   matchHistory.push(gameResult)
   displayScores()
   insertMatch(matchHistory.length, gameResult)
