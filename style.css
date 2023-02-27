@@ -57,15 +57,45 @@ body {
   align-items: center;
 }
 
-.cpu-choice {
+h1 {
+  display: block;
+  width: 100%;
+}
+
+.players-scores {
+  display: flex;
+  justify-content: center;
+}
+
+.player-card, .cpu-card {
+  width: 130px;
+  margin: 0 20px;
+}
+
+.player-card {
+  text-align: end;
+}
+
+.cpu-choice, .player-choice-container button {
   width: 100px;
   height: 100px;
+  text-align: center;
   background: lightgray;
+  border-radius: 10px;
+}
+
+.cpu-choice:disabled {
+  color: black;
+}
+
+.cpu-player-separation {
+  margin: 20px 0;
 }
 
 .hidden {
   display: none;
 }
+
 
 .selected {
   border: 2px solid red;

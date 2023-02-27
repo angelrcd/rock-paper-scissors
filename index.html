@@ -9,15 +9,18 @@
   <script type="module" src="./main.js"></script>
 </head>
 <body>
-  <h1>
-    <span class="player-score"></span>
-    :
-    <span class="cpu-score"></span>
+  <h1 class="players-scores">
+    <span class="player-card">PLAYER</span>
+    <div><span class="player-score"></span>:<span class="cpu-score"></span></div>
+    <span class="cpu-card">CPU</span>
   </h1>
+
   <h2>CPU</h2>
-  <div class="cpu-choice"></div>
-  <p class="countdown hidden"></p>
-  <p class="result hidden"></p>
+  <button class="cpu-choice" disabled></button>
+  <div class="cpu-player-separation">
+    <p class="countdown hidden"></p>
+    <p class="result hidden"></p>
+  </div>
   <div class="player-choice-container">
     <button>Rock</button>
     <button>Paper</button>
