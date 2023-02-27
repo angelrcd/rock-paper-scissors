@@ -17,6 +17,6 @@ export default function countdown(){
         countdownElement.classList.add("hidden")
         resolve()
       }
-    }, 1000)
+    }, 750)
   })
 }
